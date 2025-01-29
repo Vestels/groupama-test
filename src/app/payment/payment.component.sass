@@ -1,0 +1,38 @@
+// Breakpoints
+$sm: 576px
+$md: 768px
+$lg: 992px
+//
+
+$custom-text-color: rgba(40, 49, 104, 1)
+
+.background
+    background-color: rgba(241, 242, 244, 1)
+
+    .custom-container
+        min-height: 100vh
+
+        .left-info-section
+            height: 100vh !important
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
+
+            h5
+                color: $custom-text-color
+
+        .payment-section
+            .navigation
+                label
+                    color: $custom-text-color
+                    cursor: pointer
+                    user-select: none
+                    transition: font-weight .3s ease
+                .radio
+                    display: none
+                    &:checked + label
+                        font-weight: 600
+            
+            // @media screen and (max-width: $md)
+            // width: 100% !important
+
+        @media screen and (max-width: $md)
+            width: 100% !important

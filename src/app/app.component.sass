@@ -4,13 +4,20 @@ $md: 768px
 $lg: 992px
 //
 
+$custom-text-color: rgba(40, 49, 104, 1)
+
 header
+    position: relative
+    z-index: 999
     height: 80px
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
 
     nav
         img, div
             cursor: pointer
+
+        span
+            color: $custom-text-color
 
         .dots-icon
             background-color: rgba(241, 242, 244, 1)
