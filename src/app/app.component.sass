@@ -4,17 +4,20 @@ $md: 768px
 $lg: 992px
 //
 
-nav
+header
     height: 80px
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
 
-    img, div
-        cursor: pointer
+    nav
+        img, div
+            cursor: pointer
 
-    .dots-icon
-        background-color: rgba(241, 242, 244, 1)
-        width: 30px
-        height: 30px
+        .dots-icon
+            background-color: rgba(241, 242, 244, 1)
+            width: 30px
+            height: 30px
 
     @media screen and (max-width: $md)
         height: 50px
+        nav
+            width: 100% !important
