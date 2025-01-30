@@ -53,7 +53,7 @@ export class PaymentHistoryComponent {
     },
   ]
 
-  getTruncatedText(text: String, limit: number = 10): String {
+  getTruncatedText(text: String, limit: number = 9): String {
     return text.length > limit ? text.slice(0, limit) + '...' : text;
   }
 
@@ -65,5 +65,9 @@ export class PaymentHistoryComponent {
     } else {
       return 'success'
     }
+  }
+
+  formatAmount(amount: number): String {
+    return amount.toLocaleString('hu-HU', { useGrouping: true }) + ' Ft';
   }
 }

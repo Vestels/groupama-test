@@ -1,5 +1,11 @@
+// Breakpoints
+$sm: 576px
+$md: 768px
+$lg: 992px
+$xxl: 1400px
+//
+    
 .payment-history
-    width: 100%
     .header
         display: flex
         padding: 1rem
@@ -22,6 +28,7 @@
                 list-style: none
                 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px
                 transition: max-height 0.5s ease
+                overflow: hidden
 
                 &.expanded
                     .payment-details
@@ -34,6 +41,9 @@
 
                 .indetifier-section, span
                     flex: 1
+
+                .amount
+                    font-size: 16px
 
                 .full-identifier
                     display: none
@@ -67,9 +77,6 @@
                     cursor: pointer
                     -webkit-text-stroke: 1px
 
-                .bi-dot
-                    font-size: 2.5rem
-
                 .bi-paperclip
                     right: 2.2rem
                     font-size: 1.3rem
@@ -93,8 +100,8 @@
 
                 .status-section
                     .dot
-                        width: 6px
-                        height: 6px
+                        width: 8px
+                        height: 8px
 
                 .payment-details
                     opacity: 0
@@ -106,7 +113,7 @@
                         flex: 2
 
                     .amounts
-                        flex: 3.3
+                        flex: 3.4
 
                         .amount-1
                             flex: 1
@@ -124,3 +131,56 @@
     background-color: rgba(220, 65, 79, 1)
 .in-progress
     background-color: rgba(161, 202, 255, 1)
+
+
+@media screen and (max-width: $xxl)
+
+    ul
+
+    .list-row
+        min-height: 102px
+        position: relative
+
+        .indetifier-section
+            span
+                display: none
+
+        .amount
+            font-size: 16px
+
+        .status-section
+            .dot
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+                left: 1rem
+                width: 15px !important
+                height: 15px !important
+
+            label
+                height: 100%
+                align-content: center
+                position: absolute
+                top: 0
+                right: 1.5rem
+                transform: translateY(50%)
+
+            
+
+    .payment-details
+        .row-mobile
+            div
+                span
+                    word-break: break-word
+                    overflow-wrap: break-word
+
+                .mobile-info
+                    font-size: 12px
+
+        .row-1
+            .amounts
+                .amount-1
+                    flex: 1.5 !important
+
+                .amount-2
+                    flex: 1 !important
