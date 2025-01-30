@@ -1,0 +1,126 @@
+.payment-history
+    width: 100%
+    .header
+        display: flex
+        padding: 1rem
+        font-weight: 400
+        color: rgba(111, 115, 129, 1)
+        letter-spacing: .5px
+
+        .header-item
+            flex: 1
+            text-align: left
+
+        .status-item
+            flex: 1.3
+
+    .body
+        ul
+            font-size: 14px
+            li
+                background-color: #fff
+                list-style: none
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px
+                transition: max-height 0.5s ease
+
+                &.expanded
+                    .payment-details
+                        opacity: 1
+                        max-height: 1000px
+                        overflow: visible
+
+                .list-row
+                    min-height: 79px
+
+                .indetifier-section, span
+                    flex: 1
+
+                .full-identifier
+                    display: none
+
+                .status-section
+                    flex: 1.3
+
+                .checkbox
+                    display: none
+
+                    &:checked ~
+                        .full-identifier
+                            display: flex
+                            background-color: #fff
+                            word-break: break-word
+                            overflow-wrap: break-word
+
+                        label .bi-chevron-right
+                            transform: rotateY(180deg)
+                            transition: transform .3s ease
+
+                        .identifier
+                            display: none
+
+                    &:not(:checked) ~
+                        label .bi-chevron-right
+                            transform: rotateY(0)
+                            transition: transform .3s ease
+
+                .bi-chevron-right
+                    cursor: pointer
+                    -webkit-text-stroke: 1px
+
+                .bi-dot
+                    font-size: 2.5rem
+
+                .bi-paperclip
+                    right: 2.2rem
+                    font-size: 1.3rem
+                    transform: rotate(220deg)
+                    color: rgba(111, 115, 129, 1)
+
+                .payment-details-checkbox
+                    display: none
+
+                    &:checked + label
+                        transform: rotateX(180deg)
+                        transition: transform .3s ease
+
+                    &:not(:checked) + label
+                        transform: rotateX(0deg)
+                        transition: transform .3s ease
+
+                .bi-chevron-down
+                    cursor: pointer
+                    -webkit-text-stroke: 1px
+
+                .status-section
+                    .dot
+                        width: 6px
+                        height: 6px
+
+                .payment-details
+                    opacity: 0
+                    max-height: 0
+                    overflow: hidden
+                    transition: all .5s ease
+
+                    .insurance-period
+                        flex: 2
+
+                    .amounts
+                        flex: 3.3
+
+                        .amount-1
+                            flex: 1
+
+                        .amount-2
+                            flex: 2.3
+
+                    .receipt
+                        img, span
+                            cursor: pointer
+
+.success
+    background-color: rgba(1, 187, 161, 1)
+.failed
+    background-color: rgba(220, 65, 79, 1)
+.in-progress
+    background-color: rgba(161, 202, 255, 1)

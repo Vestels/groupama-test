@@ -1,0 +1,62 @@
+<div class="container h-100 w-100 py-3 d-flex align-items-start">
+    <div class="payment-history">
+        <div class="header">
+            <div class="header-item">Azonosító</div>
+            <div class="header-item">Befizetés módja</div>
+            <div class="header-item">Dátum</div>
+            <div class="header-item">Összeg</div>
+            <div class="header-item status-item">Státusz</div>
+        </div>
+        <div class="body">
+            <ul class="w-100 m-0 p-0">
+                <li class="d-flex flex-column mb-4 w-100 rounded" *ngFor="let payment of paymentHistories" [class.expanded]="payment.details">
+                    <div class="list-row d-flex p-3 h-100 w-100 align-items-center">
+                        <div class="indetifier-section position-relative">
+                            <input type="checkbox" class="checkbox" id="{{payment.identifier}}">
+                            <label class="h-100 ms-1 position-absolute d-flex align-items-center justify-content-center" for="{{payment.identifier}}" *ngIf="payment.identifier.length > 10"><i class="bi bi-chevron-right me-1"></i></label>
+                            <span class="identifier ms-4">{{getTruncatedText(payment.identifier)}}</span>
+                            <span class="full-identifier ms-4 me-3 w-75">{{payment.identifier}}</span>
+                        </div>
+                        <span>{{payment.method}}</span>
+                        <span>{{payment.date}}</span>
+                        <span><b>{{payment.amount}} Ft</b></span>
+                        <div class="status-section d-flex align-items-center justify-content-between">
+                            <div class="dot rounded-circle me-2" [ngClass]="getPaymentStatus(payment.status)"></div>
+                            <div class="d-flex align-items-center justify-content-between w-100">
+                                {{payment.status}}
+                                <i class="bi bi-paperclip" *ngIf="payment.receipt" [ngClass]="payment.status.toUpperCase() === 'FOLYAMATBAN' ? 'opacity-50' : '' "></i>
+                                <input type="checkbox" class="payment-details-checkbox" id="details-{{payment.identifier}}" [(ngModel)]="payment.details">
+                                <label for="details-{{payment.identifier}}"><i class="bi bi-chevron-down opacity-50 pe-2"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-details w-100 d-flex flex-column">
+                        <div class="row-1 p-4 d-flex border-top border-bottom">
+                            <div class="insurance-period d-flex flex-column gap-1">
+                                <span>Biztosítási időszak</span>
+                                <span>2019. 06. 02 - 07. 01.</span>
+                            </div>
+                            <div class="amounts d-flex align-items-center justify-content-start">
+                                <div class="amount-1 d-flex flex-column gap-1">
+                                    <span>Díjelőírás</span>
+                                    <span><b>{{payment.amount}} Ft</b></span>
+                                </div>
+                                <div class="amount-2 d-flex flex-column gap-1">
+                                    <span>Könyvelt díj</span>
+                                    <span><b>{{payment.amount}} Ft</b></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-2 p-4 d-flex flex-column gap-2" *ngIf="payment.receipt && payment.status.toUpperCase() != 'FOLYAMATBAN'">
+                            <span>Csatolmány</span>
+                            <div class="receipt d-flex align-items-center gap-2">
+                                <img src="/images/pdf-icon.png" alt="PDF Icon">
+                                <span>Fizetési nyugta letöltése</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

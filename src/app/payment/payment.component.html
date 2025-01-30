@@ -1,6 +1,6 @@
 <div class="background w-100 d-flex align-items-center justify-content-center">
     <div class="custom-container w-75 d-flex">
-        <div class="left-info-section pb-4 pt-2 w-auto h-100 d-none d-md-flex flex-column align-items-center bg-white">
+        <div class="left-info-section pb-4 pt-2 w-auto d-none d-md-flex flex-column align-items-center bg-white">
             <h5 class="w-100 p-4 border-bottom">Folyamatos Díjfizetésű Ultra Prémium Életbiztosítás</h5>
             <div class="w-100 h-100 p-4">
                 <div>
@@ -15,17 +15,18 @@
                 </div>
             </div>
         </div>
-        <div class="payment-section w-100 mx-3 mx-md-0 ms-md-4">
+        <div class="payment-section h-100 w-100 mx-3 mx-md-0 ms-md-4">
             <div class="navigation gap-3 gap-md-5 d-flex align-items-center justify-content-evenly justify-content-md-start border-bottom border-3 text-center">
                 <input type="radio" id="item" name="selection" class="radio">
-                <label for="item">Fizetendő tételek</label>
+                <label [routerLink]="['./items']" for="item">Fizetendő tételek</label>
                     
                 <input type="radio" id="payment" name="selection" class="radio">
-                <label for="payment">Eseti díj befizetése</label>
+                <label [routerLink]="['./case-fee']" for="payment">Eseti díj befizetése</label>
                     
                 <input type="radio" id="history" name="selection" class="radio" checked>
-                <label for="history">Fizetési előzmények</label>
+                <label [routerLink]="['./history']" for="history">Fizetési előzmények</label>
             </div>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
