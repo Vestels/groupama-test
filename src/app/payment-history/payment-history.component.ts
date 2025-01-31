@@ -9,7 +9,6 @@ import { PaymentModel } from './interfaces/payment';
   styleUrl: './payment-history.component.sass'
 })
 export class PaymentHistoryComponent {
-[x: string]: any;
 
   constructor() {}
 
