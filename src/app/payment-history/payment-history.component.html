@@ -1,4 +1,4 @@
-<div class="container py-4 py-xxl-3 p-0 d-flex align-items-center justify-content-center">
+<div class="container m-0 py-4 py-xxl-3 p-0 d-flex align-items-center justify-content-xxl-center">
     <section class="payment-history w-100">
         <article class="header d-none d-xxl-flex" role="heading" aria-level="2">
             <div class="header-item">Azonosító</div>
@@ -7,10 +7,10 @@
             <div class="header-item">Összeg</div>
             <div class="header-item status-item">Státusz</div>
         </article>
-        <div class="body w-100 p-0 m-0">
+        <div class="body">
             <ul class="w-100 m-0 p-0">
                 <li class="d-flex flex-column mb-3 mb-xxl-3 w-100 rounded" *ngFor="let payment of paymentHistories" [class.expanded]="payment.details">
-                    <div class="list-row d-flex flex-column-reverse flex-xxl-row p-4 p-xxl-3 h-100 w-100 align-items-start align-items-xxl-center ps-5 ps-xxl-3">
+                    <div class="list-row d-flex flex-column-reverse flex-xxl-row p-4 m-0 p-xxl-3 h-100 w-100 align-items-start align-items-xxl-center ps-5 ps-xxl-3">
                         <article class="indetifier-section position-relative">
                             <input type="checkbox" class="checkbox" id="{{payment.identifier}}" [attr.aria-labelledby]="'identifier-label-' + payment.identifier">
                             <label tabindex=0 class="d-none d-xxl-flex h-100 ms-1 position-absolute d-flex align-items-center justify-content-center" for="{{payment.identifier}}" *ngIf="payment.identifier.length > 10" title="Fizetési tétel teljes azonosítójának mutatása gomb" appEnterPress><i class="bi bi-chevron-right me-1"></i></label>
