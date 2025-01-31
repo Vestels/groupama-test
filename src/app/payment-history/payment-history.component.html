@@ -1,84 +1,83 @@
 <div class="container py-4 py-xxl-3 p-0 d-flex align-items-center justify-content-center">
-    <div class="payment-history w-100">
-        <div class="header d-none d-xxl-flex">
+    <section class="payment-history w-100">
+        <article class="header d-none d-xxl-flex" role="heading" aria-level="2">
             <div class="header-item">Azonosító</div>
             <div class="header-item">Befizetés módja</div>
             <div class="header-item">Dátum</div>
             <div class="header-item">Összeg</div>
             <div class="header-item status-item">Státusz</div>
-        </div>
+        </article>
         <div class="body w-100 p-0 m-0">
             <ul class="w-100 m-0 p-0">
                 <li class="d-flex flex-column mb-3 mb-xxl-3 w-100 rounded" *ngFor="let payment of paymentHistories" [class.expanded]="payment.details">
                     <div class="list-row d-flex flex-column-reverse flex-xxl-row p-4 p-xxl-3 h-100 w-100 align-items-start align-items-xxl-center ps-5 ps-xxl-3">
-                        <div class="indetifier-section position-relative">
-                            <input type="checkbox" class="checkbox" id="{{payment.identifier}}">
-                            <label class="d-none d-xxl-flex h-100 ms-1 position-absolute d-flex align-items-center justify-content-center" for="{{payment.identifier}}" *ngIf="payment.identifier.length > 10"><i class="bi bi-chevron-right me-1"></i></label>
-                            <span class="identifier ms-4">{{getTruncatedText(payment.identifier)}}</span>
+                        <article class="indetifier-section position-relative">
+                            <input type="checkbox" class="checkbox" id="{{payment.identifier}}" [attr.aria-labelledby]="'identifier-label-' + payment.identifier">
+                            <label tabindex=0 class="d-none d-xxl-flex h-100 ms-1 position-absolute d-flex align-items-center justify-content-center" for="{{payment.identifier}}" *ngIf="payment.identifier.length > 10" title="Fizetési tétel teljes azonosítójának mutatása gomb" appEnterPress><i class="bi bi-chevron-right me-1"></i></label>
+                            <span id="identifier-label-{{payment.identifier}}" class="identifier ms-4">{{getTruncatedText(payment.identifier)}}</span>
                             <span class="full-identifier ms-4 me-3 w-75">{{payment.identifier}}</span>
-                        </div>
+                        </article>
                         <span class="d-none d-xxl-flex">{{payment.method}}</span>
                         <span class="d-flex align-items-end p-0 gap-1">
-                            <span class="d-xxl-none">
-                                Fizetési dátum:
-                            </span>
+                            <span class="d-xxl-none">Fizetési dátum:</span>
                             {{payment.date}}
                             <i class="bi bi-paperclip d-flex d-xxl-none" *ngIf="payment.receipt" [ngClass]="payment.status.toUpperCase() === 'FOLYAMATBAN' ? 'opacity-50' : '' "></i>
                         </span>
                         <span class="amount py-1 py-xxl-0"><b>{{formatAmount(payment.amount)}}</b></span>
+                        
                         <div class="status-section d-flex align-items-center justify-content-between">
                             <div class="dot rounded-circle me-2" [ngClass]="getPaymentStatus(payment.status)"></div>
-                            <div class="d-flex align-items-center justify-content-between gap-1 w-100">
+                            <article class="d-flex align-items-center justify-content-between gap-1 w-100">
                                 {{payment.status}}
                                 <i class="bi bi-paperclip d-none d-xxl-block" *ngIf="payment.receipt" [ngClass]="payment.status.toUpperCase() === 'FOLYAMATBAN' ? 'opacity-50' : '' "></i>
-                                <input type="checkbox" class="payment-details-checkbox" id="details-{{payment.identifier}}" [(ngModel)]="payment.details">
-                                <label for="details-{{payment.identifier}}"><i class="bi bi-chevron-down opacity-50 pe-xxl-2"></i></label>
-                            </div>
+                                <input type="checkbox" class="payment-details-checkbox" id="details-{{payment.identifier}}" [(ngModel)]="payment.details" [attr.aria-labelledby]="'details-label-' + payment.identifier">
+                                <label tabindex=0 for="details-{{payment.identifier}}" id="details-label-{{payment.identifier}}" title="Fizetési tétel részleteinek lenyitása gomb" appEnterPress><i class="bi bi-chevron-down opacity-50 pe-xxl-2"></i></label>
+                            </article>
                         </div>
                     </div>
                     <div class="payment-details w-100 d-flex flex-column-reverse flex-xxl-column" *ngIf="payment.status.toUpperCase() != 'FOLYAMATBAN' ">
                         <div class="row-1 px-xxl-4 d-flex flex-column flex-xxl-row border-top border-bottom">
-                            <div class="insurance-period p-4 p-xxl-0 w-100 d-flex flex-column gap-1">
+                            <article class="insurance-period p-4 p-xxl-0 w-100 d-flex flex-column gap-1">
                                 <span class="mobile-info d-flex d-xxl-none">Időszak</span>
                                 <span class="d-none d-xxl-flex align-items-end">Biztosítási időszak</span>
                                 <span>2019. 06. 02 - 07. 01.</span>
-                            </div>
+                            </article>
                             <div class="amounts px-4 pb-4 p-xxl-4 w-100 gap-2 d-flex align-items-center justify-content-between justify-content-xxl-start">
-                                <div class="amount-1 d-flex flex-column gap-1">
+                                <article class="amount-1 d-flex flex-column gap-1">
                                     <span class="mobile-info">Díjelőírás</span>
                                     <span>{{formatAmount(payment.amount)}}</span>
-                                </div>
-                                <div class="amount-2 d-flex flex-column gap-1">
+                                </article>
+                                <article class="amount-2 d-flex flex-column gap-1">
                                     <span class="mobile-info">Könyvelt díj</span>
                                     <span><b>{{formatAmount(payment.amount)}}</b></span>
-                                </div>
+                                </article>
                             </div>
                         </div>
                         <div class="row-2 p-4 d-flex flex-column gap-2" *ngIf="payment.receipt">
                             <span class="mobile-info">Csatolmány</span>
-                            <div class="receipt d-flex align-items-center gap-3">
-                                <img src="/images/pdf-icon.png" alt="PDF ikon">
-                                <span>Fizetési nyugta letöltése</span>
-                                <img class="d-block d-xxl-none" src="/images/download-button.png" alt="Letöltés gomb">
-                            </div>
+                            <article class="receipt d-flex align-items-center gap-3">
+                                <img tabindex="0" src="/images/pdf-icon.png" alt="PDF ikon" aria-label="PDF ikon">
+                                <span tabindex="0" aria-label="Fizetési nyugta letöltése">Fizetési nyugta letöltése</span>
+                                <img tabindex="0" class="d-block d-xxl-none" src="/images/download-button.png" alt="Letöltés gomb" aria-label="Letöltés gomb">
+                            </article>
                         </div>
                         <div class="row-mobile d-flex flex-column p-4 gap-3 d-xxl-none border-top border-bottom">
-                            <div class="w-100 d-flex flex-column gap-1">
+                            <article class="w-100 d-flex flex-column gap-1">
                                 <span class="mobile-info">Státusz</span>
                                 <span>{{payment.status}}</span>
-                            </div>
-                            <div class="w-100 d-flex flex-column gap-1">
+                            </article>
+                            <article class="w-100 d-flex flex-column gap-1">
                                 <span class="mobile-info">Azonosító</span>
                                 <span class="mobile-identifier">{{payment.identifier}}</span>
-                            </div>
-                            <div class="w-100 d-flex flex-column gap-1">
+                            </article>
+                            <article class="w-100 d-flex flex-column gap-1">
                                 <span class="mobile-info">Hogyan</span>
                                 <span>{{payment.method}}</span>
-                            </div>
+                            </article>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
-    </div>
+    </section>
 </div>

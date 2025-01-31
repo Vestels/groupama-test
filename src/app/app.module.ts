@@ -8,6 +8,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 import { PaymentCaseFeeComponent } from './payment-case-fee/payment-case-fee.component';
 import { PaymentItemsComponent } from './payment-items/payment-items.component';
+import { EnterPressDirective } from './directives/enter-press.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PaymentItemsComponent } from './payment-items/payment-items.component';
     PaymentComponent,
     PaymentHistoryComponent,
     PaymentCaseFeeComponent,
-    PaymentItemsComponent
+    PaymentItemsComponent,
+    EnterPressDirective
   ],
   imports: [
     BrowserModule,

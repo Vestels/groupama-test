@@ -1,12 +1,16 @@
 <header class="w-100 d-flex justify-content-center">
-  <nav class="d-flex w-75 h-100 px-4 px-md-1 align-items-center justify-content-between">
-    <img src="/images/logo.png" alt="Groupama Logó">
+  <nav class="d-flex w-75 h-100 px-4 px-md-1 align-items-center justify-content-between" role="navigation" aria-label="Fő navigáció">
+    <a href="/" aria-label="Vissza a kezdőlapra" title="Vissza a kezdőlapra Gomb">
+      <img src="/images/logo.png" alt="Groupama Logó">
+    </a>
     <div class="d-flex align-items-center gap-2">
-      <div class="dots-icon me-2 d-flex d-md-none align-items-center justify-content-center rounded-circle"><i class="bi bi-three-dots"></i></div>
-      <img src="/images/signout-button.png" alt="Kijelentkezés Gomb">
-      <span class="d-none d-md-flex">Kilépés</span>
+      <div class="dots-icon me-2 d-flex d-md-none align-items-center justify-content-center rounded-circle" role="button" aria-label="Navigációs menü megnyitása" tabindex="0"><i class="bi bi-three-dots"></i></div>
+      <button class="d-flex border-0 gap-2 bg-transparent align-items-center" role="button" aria-label="Kijelentkezés" title="Kijelentkezés Gomb">
+        <img src="/images/signout-button.png" alt="Kijelentkezés Gomb">
+        <span class="d-none d-md-block">Kilépés</span>
+      </button>
     </div>
   </nav>
 </header>
 
-<router-outlet></router-outlet>
+<router-outlet role="main"></router-outlet>
